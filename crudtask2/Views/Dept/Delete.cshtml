@@ -1,0 +1,29 @@
+﻿@model crudtask2.Models.depart
+
+@{
+    ViewBag.title = "delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@{
+    <script type="text/javascript">
+
+        confirm("Are you sure ?");
+        
+    </script>
+}*@
+@*@using (Html.BeginForm())
+    {
+        <hr />
+        <div>
+            @Html.DisplayNameFor(m => m.Id): @Html.DisplayFor(m => m.Id) <br />
+            @Html.DisplayNameFor(m => m.Name): @Html.DisplayFor(m => m.Name) <br />
+            @Html.DisplayNameFor(m => m.Location): @Html.DisplayFor(m => m.Location) <br />
+        </div>
+        <p>
+            <input type="submit" value="Delete" />
+        </p>*@
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+}

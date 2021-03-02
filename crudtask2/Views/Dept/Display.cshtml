@@ -1,0 +1,19 @@
+﻿@model crudtask2.Models.depart
+@{
+    ViewBag.title = "Display";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<div class="container" >
+
+    <div class="jumbotron">
+        <h3>Detials of @Html.DisplayFor(m => m.Name)</h3>
+        @Html.DisplayNameFor(m => m.Id): @Html.DisplayFor(m => m.Id) <br />
+        @Html.DisplayNameFor(m => m.Location): @Html.DisplayFor(m => m.Location) <br />
+    </div>
+</div>
+<hr />
+<p>
+    @Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "btn btn-primary" })
+</p>

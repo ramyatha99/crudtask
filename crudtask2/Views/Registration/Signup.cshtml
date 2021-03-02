@@ -1,0 +1,114 @@
+﻿@*new { enctype = "multipart/form-data", onsubmit = "registersuccess()" }@section scripts {
+
+        <script type="text/javascript">
+            function registersuccess() {
+                alert("you have registered successfully");
+            }
+        </script>
+    }
+*@
+
+
+
+@model crudtask2.Models.student
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Signup", "Registration", FormMethod.Post, htmlAttributes: new { onsubmit = "record()" }))
+{
+
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3" style="background-color:rgb(128, 128, 128,0.3)">
+            <h2 style="text-align:center;color:blue">Sign-up</h2>
+            <div class="form-horizontal">
+                <br />
+
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FirstName, htmlAttributes: new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter First Name" } })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LastName, htmlAttributes: new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Last Name" } })
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Email" } })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PhNo, htmlAttributes: new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.EditorFor(m => m.PhNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Mobile number" } })
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, htmlAttributes: new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Password" } })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DeptId, "DeptId", htmlAttributes: new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.DropDownList("DeptId", null, "select", htmlAttributes: new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Dob, htmlAttributes: new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.EditorFor(m => m.Dob, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address, htmlAttributes: new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.EditorFor(m => m.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Address" } })
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Gender, htmlAttributes: new { @class = "control-label col-xs-3 " })
+                    <div class="col-xs-9">
+                        @*@Html.EditorFor(m => m.Gender, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Gender" } })*@
+                        @Html.RadioButtonFor(m => m.Gender, "Male", new { htmlAttributes = new { @class = "radio-inline" } }) Male
+                        @Html.RadioButtonFor(m => m.Gender, "Female", new { htmlAttributes = new { @class = "radio-inline" } }) Female
+                    </div>
+
+                </div>
+                <div>
+                    <input type="submit" value="Signup" class="btn btn-primary col-xs-offset-4" />
+                    @Html.ActionLink("Cancel", "Home", "Dept", new { area = "" }, new { @class = "btn btn-primary col-xs-offset-1" })
+
+                </div><br />
+            </div>
+        </div>
+    </div>
+}
+<br />
+@{
+    <script type="text/javascript">
+        function record() {
+            alert("Registered Successfully");
+        }
+    </script>
+}

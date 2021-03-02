@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NORTHWNDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="NORTHWNDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="departs" EntityType="NORTHWNDModel.depart" />
+    <EntitySet Name="students" EntityType="NORTHWNDModel.student" />
+    <AssociationSet Name="FK__student__DeptId__45BE5BA9" Association="NORTHWNDModel.FK__student__DeptId__45BE5BA9">
+      <End Role="depart" EntitySet="departs" />
+      <End Role="student" EntitySet="students" />
+    </AssociationSet>
+    <EntitySet Name="admins" EntityType="NORTHWNDModel.admin" />
+  </EntityContainer>
+  <EntityType Name="depart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="students" Relationship="NORTHWNDModel.FK__student__DeptId__45BE5BA9" FromRole="depart" ToRole="student" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="PhNo" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Dob" Type="DateTime" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="DeptId" Type="Int32" />
+    <NavigationProperty Name="depart" Relationship="NORTHWNDModel.FK__student__DeptId__45BE5BA9" FromRole="student" ToRole="depart" />
+  </EntityType>
+  <Association Name="FK__student__DeptId__45BE5BA9">
+    <End Type="NORTHWNDModel.depart" Role="depart" Multiplicity="0..1" />
+    <End Type="NORTHWNDModel.student" Role="student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="depart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
